@@ -18,6 +18,8 @@ import (
 	"ticket-to-ride/internal/config"
 	"ticket-to-ride/internal/game/catalog"
 	"ticket-to-ride/internal/httpapi"
+	"ticket-to-ride/internal/repository/postgres"
+	"ticket-to-ride/internal/room"
 )
 
 func main() {
@@ -50,7 +52,34 @@ func run(ctx context.Context, logger *slog.Logger) error {
 	if err := verifier.Warm(ctx); err != nil {
 		return fmt.Errorf("authentication initialization: %w", err)
 	}
-	api, err := httpapi.New(cat, verifier, logger)
+	var lobby *room.Service
+	if cfg.DatabaseURL != "" {
+		limited, cancel := context.WithTimeout(ctx, 5*time.Second)
+		store, openErr := postgres.Open(limited, cfg.DatabaseURL, catalog.RulesetVersion, cat.Manifest().SHA256, int32(cfg.DatabaseMaxConns))
+		cancel()
+		if openErr != nil {
+			return openErr
+		}
+		defer store.Close()
+		instance, idErr := room.NewID()
+		if idErr != nil {
+			return fmt.Errorf("instance identity unavailable")
+		}
+		lobby, err = room.NewService(store, room.Options{Ruleset: catalog.RulesetVersion, Hash: cat.Manifest().SHA256, Instance: instance, Workers: cfg.RoomWorkers, Queue: cfg.RoomQueue, MaxRooms: cfg.MaxRooms, BcryptCost: cfg.BcryptCost, OperationTimeout: 5 * time.Second})
+		if err != nil {
+			return err
+		}
+		defer func() {
+			drain, cancel := context.WithTimeout(context.Background(), cfg.ShutdownTimeout)
+			defer cancel()
+			if err := lobby.Close(drain); err != nil {
+				logger.Error("room drain failed")
+			}
+		}()
+	} else {
+		logger.Warn("room APIs unavailable until DATABASE_URL is configured")
+	}
+	api, err := httpapi.New(cat, verifier, logger, httpapi.WithRooms(lobby), httpapi.WithAllowedOrigins(cfg.AllowedOrigins), httpapi.RequirePersistence())
 	if err != nil {
 		return err
 	}

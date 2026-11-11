@@ -7,7 +7,7 @@ CREATE TABLE public.rooms (
     name text NOT NULL CHECK (char_length(btrim(name)) BETWEEN 1 AND 80),
     password_hash text,
     password_version bigint NOT NULL DEFAULT 1 CHECK (password_version > 0),
-    host_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE RESTRICT,
+    host_id uuid REFERENCES auth.users(id) ON DELETE RESTRICT,
     max_players smallint NOT NULL CHECK (max_players BETWEEN 2 AND 5),
     status text NOT NULL DEFAULT 'WAITING'
         CHECK (status IN ('WAITING', 'PLAYING', 'FINISHED')),
@@ -17,6 +17,8 @@ CREATE TABLE public.rooms (
     lease_until timestamptz,
     created_at timestamptz NOT NULL DEFAULT now(),
     updated_at timestamptz NOT NULL DEFAULT now(),
+    closed_at timestamptz,
+    CHECK (closed_at IS NOT NULL OR host_id IS NOT NULL),
     CHECK ((owner_instance IS NULL) = (lease_until IS NULL))
 );
 
@@ -71,5 +73,13 @@ CREATE INDEX room_players_join_order_idx
     ON public.room_players (room_id, joined_at, user_id);
 CREATE INDEX room_commands_retention_idx
     ON public.room_commands (room_id, created_at);
+
+-- Fail closed even when deployment stops before the role-grant migration.
+REVOKE ALL ON public.rooms, public.room_players, public.game_snapshots,
+    public.room_commands FROM PUBLIC, anon, authenticated, service_role;
+ALTER TABLE public.rooms ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.room_players ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.game_snapshots ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.room_commands ENABLE ROW LEVEL SECURITY;
 
 COMMIT;

@@ -18,6 +18,8 @@ ALTER TABLE public.game_snapshots ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.room_commands ENABLE ROW LEVEL SECURITY;
 
 GRANT USAGE ON SCHEMA public TO ttr_backend;
+GRANT USAGE ON SCHEMA ttr_private TO ttr_backend;
+GRANT SELECT ON ttr_private.schema_migrations TO ttr_backend;
 GRANT SELECT, INSERT, UPDATE, DELETE ON public.rooms,
     public.room_players, public.game_snapshots, public.room_commands
     TO ttr_backend;

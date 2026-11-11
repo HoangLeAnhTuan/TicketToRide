@@ -11,16 +11,23 @@ import (
 )
 
 type Config struct {
-	HTTPAddr        string
-	Issuer          string
-	Audience        string
-	JWKSURL         string
-	Algorithms      []string
-	LegacySecret    string
-	JWKSCacheTTL    time.Duration
-	RefreshInterval time.Duration
-	AuthHTTPTimeout time.Duration
-	ShutdownTimeout time.Duration
+	HTTPAddr         string
+	Issuer           string
+	Audience         string
+	JWKSURL          string
+	Algorithms       []string
+	LegacySecret     string
+	JWKSCacheTTL     time.Duration
+	RefreshInterval  time.Duration
+	AuthHTTPTimeout  time.Duration
+	ShutdownTimeout  time.Duration
+	DatabaseURL      string
+	DatabaseMaxConns int
+	RoomWorkers      int
+	RoomQueue        int
+	MaxRooms         int
+	BcryptCost       int
+	AllowedOrigins   []string
 }
 
 // Load accepts an environment lookup so tests never change process-wide state.
@@ -90,6 +97,32 @@ func Load(getenv func(string) string) (Config, error) {
 	}
 	if c.RefreshInterval > c.JWKSCacheTTL {
 		return Config{}, fmt.Errorf("JWKS_REFRESH_INTERVAL must not exceed JWKS_CACHE_TTL")
+	}
+	c.DatabaseURL = strings.TrimSpace(getenv("DATABASE_URL"))
+	for _, field := range []struct {
+		name, fallback string
+		min, max       int
+		dst            *int
+	}{
+		{"DATABASE_MAX_CONNS", "16", 2, 100, &c.DatabaseMaxConns},
+		{"ROOM_WORKERS", "8", 1, 32, &c.RoomWorkers},
+		{"ROOM_JOB_QUEUE", "256", 1, 4096, &c.RoomQueue},
+		{"MAX_ACTIVE_ROOMS", "1000", 1, 10000, &c.MaxRooms},
+		{"BCRYPT_COST", "10", 8, 12, &c.BcryptCost},
+	} {
+		n, err := strconv.Atoi(value(getenv, field.name, field.fallback))
+		if err != nil || n < field.min || n > field.max {
+			return Config{}, fmt.Errorf("%s is outside its allowed bounds", field.name)
+		}
+		*field.dst = n
+	}
+	for _, origin := range strings.Split(value(getenv, "ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"), ",") {
+		origin = strings.TrimSpace(origin)
+		u, err := url.Parse(origin)
+		if err != nil || ValidateEndpoint(origin) != nil || u.Path != "" {
+			return Config{}, fmt.Errorf("ALLOWED_ORIGINS must contain exact HTTPS origins or loopback development origins")
+		}
+		c.AllowedOrigins = append(c.AllowedOrigins, origin)
 	}
 	return c, nil
 }

@@ -16,6 +16,7 @@ import (
 
 	"ticket-to-ride/internal/auth"
 	"ticket-to-ride/internal/game/catalog"
+	"ticket-to-ride/internal/room"
 )
 
 type Verifier interface {
@@ -24,23 +25,38 @@ type Verifier interface {
 }
 
 type Server struct {
-	router   *gin.Engine
-	draining atomic.Bool
+	router             *gin.Engine
+	draining           atomic.Bool
+	rooms              *room.Service
+	allowedOrigins     []string
+	requirePersistence bool
 }
 
-func New(cat *catalog.Catalog, verifier Verifier, logger *slog.Logger) (*Server, error) {
+type Option func(*Server)
+
+func WithRooms(service *room.Service) Option { return func(s *Server) { s.rooms = service } }
+func WithAllowedOrigins(origins []string) Option {
+	return func(s *Server) { s.allowedOrigins = append([]string(nil), origins...) }
+}
+func RequirePersistence() Option { return func(s *Server) { s.requirePersistence = true } }
+
+func New(cat *catalog.Catalog, verifier Verifier, logger *slog.Logger, opts ...Option) (*Server, error) {
 	if cat == nil || verifier == nil || logger == nil {
 		return nil, fmt.Errorf("catalog, verifier and logger are required")
 	}
 	s := &Server{router: gin.New()}
+	for _, opt := range opts {
+		opt(s)
+	}
 	if err := s.router.SetTrustedProxies(nil); err != nil {
 		return nil, fmt.Errorf("disable implicit trusted proxies: %w", err)
 	}
 	s.router.Use(requestIdentity(), safeRecovery(logger))
+	s.router.Use(cors(s.allowedOrigins))
 	s.router.GET("/health/live", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"status": "ok"}) })
 	s.router.GET("/health/ready", func(c *gin.Context) {
 		// A probe also refreshes expired trust material through the bounded cache.
-		if s.draining.Load() || verifier.Warm(c.Request.Context()) != nil {
+		if s.draining.Load() || verifier.Warm(c.Request.Context()) != nil || (s.requirePersistence && s.rooms == nil) || (s.rooms != nil && s.rooms.Ping(c.Request.Context()) != nil) {
 			c.JSON(http.StatusServiceUnavailable, gin.H{"status": "unavailable"})
 			return
 		}
@@ -75,6 +91,9 @@ func New(cat *catalog.Catalog, verifier Verifier, logger *slog.Logger) (*Server,
 		c.Header("Cache-Control", "no-store")
 		c.JSON(http.StatusOK, p)
 	})
+
+	s.registerRooms(private, s.rooms)
+
 	return s, nil
 }
 
