@@ -1,0 +1,6 @@
+---
+description: Apply verified Supabase identity and private transactional persistence
+alwaysApply: true
+---
+
+Read and apply [supabase-postgres-architect](../../.agents/skills/supabase-postgres-architect/SKILL.md) for backend work.

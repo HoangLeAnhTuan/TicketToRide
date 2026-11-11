@@ -1,0 +1,6 @@
+---
+description: Apply single-writer room ownership and safe Go concurrency
+alwaysApply: true
+---
+
+Read and apply [golang-concurrency-pro](../../.agents/skills/golang-concurrency-pro/SKILL.md) for backend work.

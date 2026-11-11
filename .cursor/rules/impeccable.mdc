@@ -1,0 +1,7 @@
+---
+description: Apply this project's idiomatic Go and deterministic game standards
+alwaysApply: true
+---
+
+Read and apply [impeccable](../../.agents/skills/impeccable/SKILL.md) for backend work.
+The implementation phase boundary is defined in [AGENTS.md](../../AGENTS.md).

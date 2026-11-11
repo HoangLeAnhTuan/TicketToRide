@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "ruleset_version": "europe-core-v1",
+  "sha256": "ef83addf6c7d29e0a3ad97db226df6677d4fdc6d8b024fa3e1b0ec08251bdf44",
+  "city_count": 47,
+  "route_count": 101,
+  "ticket_count": 46,
+  "long_ticket_count": 6,
+  "parallel_group_count": 11
+}
