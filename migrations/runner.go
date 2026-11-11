@@ -3,7 +3,9 @@ package migrations
 import (
 	"context"
 	"crypto/sha256"
+	"errors"
 	"fmt"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"io/fs"
 	"sort"
@@ -40,6 +42,10 @@ func Up(ctx context.Context, pool *pgxpool.Pool) error {
 				return fmt.Errorf("migration checksum changed: %s", name)
 			}
 			continue
+		}
+		if !errors.Is(err, pgx.ErrNoRows) {
+			_ = tx.Rollback(ctx)
+			return fmt.Errorf("migration registry read failed")
 		}
 		// Exactly these files are embedded; outer transaction includes its durable marker.
 		body := strings.TrimSpace(string(raw))

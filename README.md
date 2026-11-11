@@ -23,6 +23,30 @@ For an existing legacy project, explicitly set `SUPABASE_ENABLE_LEGACY_HS256=tru
 | `GET /health/ready` | public | catalog loaded, nonexpired auth trust available, not draining |
 | `GET /v1/catalog/europe-core-v1` | public | cities, routes, simplified rules, scoring table, ticket counts, hash, ETag; no ticket identities |
 | `GET /v1/me` | bearer access token | verified UUID identity, guest flag, and expiry |
+| `GET /v1/rooms` | bearer access token | cursor-paginated list of waiting rooms |
+| `GET /v1/rooms/by-code/:code` | bearer access token | lookup waiting room summary by 6-char code |
+| `POST /v1/rooms` | bearer access token | create room (idempotent with `Idempotency-Key`) |
+| `POST /v1/rooms/:id/join` | bearer access token | join room with display name and optional password |
+| `POST /v1/rooms/:id/leave` | bearer access token | leave room (transfers host or marks room closed) |
+| `PATCH /v1/rooms/:id/player` | bearer access token | set color, ready state, or display name |
+| `GET /v1/rooms/:id/state` | bearer access token | recipient-specific member lobby view |
+| `POST /v1/rooms/:id/ws-ticket` | bearer access token | issue single-use admission ticket for WebSocket |
+
+## Frontend SPA
+
+The monorepo includes a fast React + TypeScript + Vite + Tailwind CSS frontend in [`frontend/`](frontend/):
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Features:
+- Interactive Europe map with SVG rendering of all 47 cities and 101 route tracks.
+- Route inspector with point values, tunnel/ferry badges, and connected neighbor lists.
+- Supabase Authentication modal supporting 1-click Anonymous Guest sign-in and Email/Password credentials.
+- Real-time backend readiness and verified identity badge against the Go backend.
 
 Email and Anonymous Auth users use the same endpoint with their Supabase user **access token**. Guests need to enable Anonymous Sign-Ins and call Supabase `signInAnonymously()` in the client. A publishable/anon API key is not a user identity. No email is required for guests. [Supabase anonymous authentication](https://supabase.com/docs/guides/auth/auth-anonymous)
 

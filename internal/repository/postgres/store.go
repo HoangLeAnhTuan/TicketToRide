@@ -27,6 +27,9 @@ func New(pool *pgxpool.Pool, ruleset, hash string) *Store {
 }
 
 func Open(ctx context.Context, dsn, ruleset, hash string, max int32) (*Store, error) {
+	if max < 2 || max > 100 {
+		return nil, fmt.Errorf("database pool size must be between 2 and 100")
+	}
 	cfg, err := pgxpool.ParseConfig(dsn)
 	if err != nil {
 		return nil, fmt.Errorf("invalid database configuration")
@@ -66,7 +69,7 @@ func (s *Store) Ping(ctx context.Context) error {
 	var allowed bool
 	err := s.pool.QueryRow(ctx, `SELECT NOT r.rolsuper AND NOT r.rolbypassrls
  AND pg_has_role(current_user,'ttr_backend','member')
- AND NOT EXISTS(SELECT 1 FROM pg_class WHERE oid IN ('public.rooms'::regclass,'public.room_players'::regclass,'public.game_snapshots'::regclass,'public.room_commands'::regclass) AND relowner=r.oid)
+ AND NOT EXISTS(SELECT 1 FROM pg_class WHERE oid IN ('public.rooms'::regclass,'public.room_players'::regclass,'public.game_snapshots'::regclass,'public.room_commands'::regclass) AND pg_has_role(current_user,relowner,'USAGE'))
  FROM pg_roles r WHERE rolname=current_user`).Scan(&allowed)
 	if err != nil || !allowed {
 		return room.Failure("PERSISTENCE_UNAVAILABLE")
@@ -96,7 +99,7 @@ func (s *Store) load(ctx context.Context, q queryer, id string, lock bool) (room
 			return room.Record{}, safe(err)
 		}
 	}
-	sql := `SELECT r.id::text,r.room_code,r.name,coalesce(r.host_id::text,''),r.max_players,r.status,r.password_hash,r.password_version,r.created_at,r.closed_at,coalesce(r.owner_instance::text,''),r.owner_epoch,r.lease_until,r.state_version,g.state_json
+	sql := `SELECT r.id::text,r.room_code,r.name,coalesce(r.host_id::text,''),r.max_players,r.status,r.password_hash,r.password_version,r.created_at,r.closed_at,coalesce(r.owner_instance::text,''),r.owner_epoch,r.lease_until,r.state_version,g.state_json,g.state_version,g.schema_version,g.ruleset_version,g.catalog_hash,g.turn_number
  FROM public.rooms r LEFT JOIN public.game_snapshots g ON g.room_id=r.id WHERE r.id=$1`
 	var r room.Record
 	var normal room.Meta
@@ -104,7 +107,10 @@ func (s *Store) load(ctx context.Context, q queryer, id string, lock bool) (room
 	var until *time.Time
 	var raw []byte
 	var version int64
-	err := q.QueryRow(ctx, sql, id).Scan(&normal.ID, &normal.Code, &normal.Name, &normal.HostID, &normal.MaxPlayers, &normal.Status, &hash, &normal.PasswordVersion, &normal.CreatedAt, &normal.ClosedAt, &r.Owner.Instance, &r.Owner.Epoch, &until, &version, &raw)
+	var snapshotVersion, turn int64
+	var schema int
+	var ruleset, catalogHash string
+	err := q.QueryRow(ctx, sql, id).Scan(&normal.ID, &normal.Code, &normal.Name, &normal.HostID, &normal.MaxPlayers, &normal.Status, &hash, &normal.PasswordVersion, &normal.CreatedAt, &normal.ClosedAt, &r.Owner.Instance, &r.Owner.Epoch, &until, &version, &raw, &snapshotVersion, &schema, &ruleset, &catalogHash, &turn)
 	if err != nil {
 		return r, safe(err)
 	}
@@ -126,7 +132,7 @@ func (s *Store) load(ctx context.Context, q queryer, id string, lock bool) (room
 	}
 	a, _ := json.Marshal(normal)
 	b, _ := json.Marshal(state.Room)
-	if !bytes.Equal(a, b) || version != state.StateVersion {
+	if !bytes.Equal(a, b) || version != state.StateVersion || snapshotVersion != state.StateVersion || schema != state.SchemaVersion || ruleset != state.RulesetVersion || catalogHash != state.CatalogHash || turn != 0 {
 		return r, room.Failure("INVALID_SNAPSHOT")
 	}
 	rows, err := q.Query(ctx, `SELECT user_id::text,display_name,coalesce(color,''),seat,joined_at,is_ready,is_connected FROM public.room_players WHERE room_id=$1`, id)
@@ -324,10 +330,16 @@ func (s *Store) write(ctx context.Context, q queryer, r room.Record) error {
 	if err != nil {
 		return room.Failure("INVALID_SNAPSHOT")
 	}
-	_, err = q.Exec(ctx, `INSERT INTO public.game_snapshots(room_id,turn_number,state_version,schema_version,ruleset_version,catalog_hash,state_json)
+	tag, err := q.Exec(ctx, `INSERT INTO public.game_snapshots(room_id,turn_number,state_version,schema_version,ruleset_version,catalog_hash,state_json)
  VALUES($1,0,$2,$3,$4,$5,$6) ON CONFLICT(room_id) DO UPDATE SET state_version=excluded.state_version,schema_version=excluded.schema_version,ruleset_version=excluded.ruleset_version,catalog_hash=excluded.catalog_hash,state_json=excluded.state_json,updated_at=clock_timestamp()
  WHERE public.game_snapshots.state_version<excluded.state_version`, m.ID, r.State.StateVersion, r.State.SchemaVersion, r.State.RulesetVersion, r.State.CatalogHash, raw)
-	return safe(err)
+	if err != nil {
+		return safe(err)
+	}
+	if tag.RowsAffected() != 1 {
+		return room.Failure("STALE_STATE")
+	}
+	return nil
 }
 func insertReceipt(ctx context.Context, q queryer, id string, r room.Receipt) error {
 	raw, err := json.Marshal(r.Ack)

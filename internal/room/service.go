@@ -163,13 +163,7 @@ func (a *actor) run() {
 	s := a.service
 	defer close(a.done)
 	defer a.cancel()
-	defer func() {
-		s.mu.Lock()
-		if s.actors[a.id] == a {
-			delete(s.actors, a.id)
-		}
-		s.mu.Unlock()
-	}()
+	defer a.retire()
 	timer := time.NewTicker(10 * time.Second)
 	defer timer.Stop()
 	queue := []request{}
@@ -247,10 +241,12 @@ func (a *actor) run() {
 			r := *pending
 			pending = nil
 			if result.Err != nil {
-				respond(r, Outcome{}, result.Err)
 				if fatal(result.Err) || (a.record == nil && code(result.Err, "ROOM_NOT_FOUND")) {
+					a.retire()
+					respond(r, Outcome{}, result.Err)
 					return
 				}
+				respond(r, Outcome{}, result.Err)
 				continue
 			}
 			v := result.Value.(workResult)
@@ -270,9 +266,24 @@ func (a *actor) run() {
 					continue
 				}
 			}
+			closed := a.record != nil && a.record.State.Room.ClosedAt != nil
+			if closed {
+				a.retire()
+			}
 			respond(r, out, nil)
+			if closed {
+				return
+			}
 		}
 	}
+}
+func (a *actor) retire() {
+	s := a.service
+	s.mu.Lock()
+	if s.actors[a.id] == a {
+		delete(s.actors, a.id)
+	}
+	s.mu.Unlock()
 }
 func fatal(err error) bool {
 	var e *Error
