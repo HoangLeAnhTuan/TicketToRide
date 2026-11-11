@@ -1,0 +1,57 @@
+export interface CityCoordinate {
+  id: string
+  name: string
+  x: number
+  y: number
+  labelOffset?: { x: number; y: number }
+}
+
+export const CITY_COORDINATES: Record<string, CityCoordinate> = {
+  edinburgh: { id: 'edinburgh', name: 'Edinburgh', x: 190, y: 130, labelOffset: { x: -35, y: -15 } },
+  london: { id: 'london', name: 'London', x: 240, y: 250, labelOffset: { x: -45, y: 5 } },
+  dieppe: { id: 'dieppe', name: 'Dieppe', x: 260, y: 320, labelOffset: { x: -45, y: 10 } },
+  brest: { id: 'brest', name: 'Brest', x: 140, y: 370, labelOffset: { x: -40, y: 10 } },
+  paris: { id: 'paris', name: 'Paris', x: 300, y: 380, labelOffset: { x: 12, y: 4 } },
+  bruxelles: { id: 'bruxelles', name: 'Bruxelles', x: 340, y: 290, labelOffset: { x: 12, y: -6 } },
+  amsterdam: { id: 'amsterdam', name: 'Amsterdam', x: 360, y: 215, labelOffset: { x: -45, y: -15 } },
+  essen: { id: 'essen', name: 'Essen', x: 435, y: 230, labelOffset: { x: 10, y: -10 } },
+  frankfurt: { id: 'frankfurt', name: 'Frankfurt', x: 425, y: 320, labelOffset: { x: -50, y: -10 } },
+  kobenhavn: { id: 'kobenhavn', name: 'København', x: 490, y: 145, labelOffset: { x: -40, y: -15 } },
+  stockholm: { id: 'stockholm', name: 'Stockholm', x: 645, y: 85, labelOffset: { x: 15, y: -5 } },
+  berlin: { id: 'berlin', name: 'Berlin', x: 540, y: 260, labelOffset: { x: 12, y: -10 } },
+  danzig: { id: 'danzig', name: 'Danzig', x: 650, y: 215, labelOffset: { x: 10, y: -12 } },
+  warszawa: { id: 'warszawa', name: 'Warszawa', x: 685, y: 295, labelOffset: { x: 12, y: 4 } },
+  riga: { id: 'riga', name: 'Riga', x: 760, y: 165, labelOffset: { x: 12, y: -8 } },
+  wilno: { id: 'wilno', name: 'Wilno', x: 770, y: 255, labelOffset: { x: 12, y: 4 } },
+  petrograd: { id: 'petrograd', name: 'Petrograd', x: 910, y: 105, labelOffset: { x: 15, y: -5 } },
+  smolensk: { id: 'smolensk', name: 'Smolensk', x: 900, y: 245, labelOffset: { x: 12, y: -10 } },
+  moskva: { id: 'moskva', name: 'Moskva', x: 1030, y: 215, labelOffset: { x: 15, y: -5 } },
+  kyiv: { id: 'kyiv', name: 'Kyiv', x: 850, y: 375, labelOffset: { x: -35, y: -12 } },
+  kharkov: { id: 'kharkov', name: 'Kharkov', x: 1000, y: 365, labelOffset: { x: 15, y: -5 } },
+  rostov: { id: 'rostov', name: 'Rostov', x: 1060, y: 465, labelOffset: { x: 15, y: 4 } },
+  sochi: { id: 'sochi', name: 'Sochi', x: 1090, y: 565, labelOffset: { x: 15, y: 4 } },
+  sevastopol: { id: 'sevastopol', name: 'Sevastopol', x: 940, y: 525, labelOffset: { x: -45, y: 15 } },
+  erzurum: { id: 'erzurum', name: 'Erzurum', x: 1160, y: 675, labelOffset: { x: -35, y: 18 } },
+  angora: { id: 'angora', name: 'Angora', x: 990, y: 685, labelOffset: { x: -25, y: 18 } },
+  constantinople: { id: 'constantinople', name: 'Constantinople', x: 870, y: 625, labelOffset: { x: -75, y: 18 } },
+  smyrna: { id: 'smyrna', name: 'Smyrna', x: 840, y: 735, labelOffset: { x: 12, y: 15 } },
+  athina: { id: 'athina', name: 'Athina', x: 750, y: 755, labelOffset: { x: -40, y: 18 } },
+  sofia: { id: 'sofia', name: 'Sofia', x: 780, y: 585, labelOffset: { x: -38, y: -10 } },
+  bucuresti: { id: 'bucuresti', name: 'Bucureşti', x: 820, y: 505, labelOffset: { x: 15, y: -5 } },
+  budapest: { id: 'budapest', name: 'Budapest', x: 660, y: 445, labelOffset: { x: 12, y: -8 } },
+  wien: { id: 'wien', name: 'Wien', x: 585, y: 415, labelOffset: { x: -20, y: -12 } },
+  munchen: { id: 'munchen', name: 'München', x: 490, y: 425, labelOffset: { x: -50, y: -8 } },
+  zurich: { id: 'zurich', name: 'Zürich', x: 405, y: 475, labelOffset: { x: -40, y: -10 } },
+  venezia: { id: 'venezia', name: 'Venezia', x: 490, y: 515, labelOffset: { x: 12, y: -5 } },
+  zagrab: { id: 'zagrab', name: 'Zagrab', x: 595, y: 495, labelOffset: { x: 12, y: 8 } },
+  sarajevo: { id: 'sarajevo', name: 'Sarajevo', x: 680, y: 555, labelOffset: { x: 12, y: 5 } },
+  brindisi: { id: 'brindisi', name: 'Brindisi', x: 640, y: 675, labelOffset: { x: 12, y: 5 } },
+  roma: { id: 'roma', name: 'Roma', x: 510, y: 625, labelOffset: { x: -40, y: 5 } },
+  palermo: { id: 'palermo', name: 'Palermo', x: 535, y: 765, labelOffset: { x: -45, y: 15 } },
+  marseille: { id: 'marseille', name: 'Marseille', x: 325, y: 525, labelOffset: { x: 12, y: 8 } },
+  barcelona: { id: 'barcelona', name: 'Barcelona', x: 260, y: 625, labelOffset: { x: 12, y: 15 } },
+  pamplona: { id: 'pamplona', name: 'Pamplona', x: 200, y: 545, labelOffset: { x: -55, y: -8 } },
+  madrid: { id: 'madrid', name: 'Madrid', x: 140, y: 655, labelOffset: { x: -45, y: 0 } },
+  lisboa: { id: 'lisboa', name: 'Lisboa', x: 60, y: 685, labelOffset: { x: -45, y: 5 } },
+  cadiz: { id: 'cadiz', name: 'Cádiz', x: 100, y: 785, labelOffset: { x: -35, y: 15 } },
+}

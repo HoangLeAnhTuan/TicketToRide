@@ -1,0 +1,1530 @@
+{
+  "schema_version": 1,
+  "ruleset_version": "europe-core-v1",
+  "cities": [
+    {
+      "id": "amsterdam",
+      "name": "Amsterdam"
+    },
+    {
+      "id": "angora",
+      "name": "Angora"
+    },
+    {
+      "id": "athina",
+      "name": "Athina"
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona"
+    },
+    {
+      "id": "berlin",
+      "name": "Berlin"
+    },
+    {
+      "id": "brest",
+      "name": "Brest"
+    },
+    {
+      "id": "brindisi",
+      "name": "Brindisi"
+    },
+    {
+      "id": "bruxelles",
+      "name": "Bruxelles"
+    },
+    {
+      "id": "bucuresti",
+      "name": "Bucuresti"
+    },
+    {
+      "id": "budapest",
+      "name": "Budapest"
+    },
+    {
+      "id": "cadiz",
+      "name": "Cadiz"
+    },
+    {
+      "id": "constantinople",
+      "name": "Constantinople"
+    },
+    {
+      "id": "danzig",
+      "name": "Danzig"
+    },
+    {
+      "id": "dieppe",
+      "name": "Dieppe"
+    },
+    {
+      "id": "edinburgh",
+      "name": "Edinburgh"
+    },
+    {
+      "id": "erzurum",
+      "name": "Erzurum"
+    },
+    {
+      "id": "essen",
+      "name": "Essen"
+    },
+    {
+      "id": "frankfurt",
+      "name": "Frankfurt"
+    },
+    {
+      "id": "kharkov",
+      "name": "Kharkov"
+    },
+    {
+      "id": "kobenhavn",
+      "name": "Kobenhavn"
+    },
+    {
+      "id": "kyiv",
+      "name": "Kyiv"
+    },
+    {
+      "id": "lisboa",
+      "name": "Lisboa"
+    },
+    {
+      "id": "london",
+      "name": "London"
+    },
+    {
+      "id": "madrid",
+      "name": "Madrid"
+    },
+    {
+      "id": "marseille",
+      "name": "Marseille"
+    },
+    {
+      "id": "moskva",
+      "name": "Moskva"
+    },
+    {
+      "id": "munchen",
+      "name": "Munchen"
+    },
+    {
+      "id": "palermo",
+      "name": "Palermo"
+    },
+    {
+      "id": "pamplona",
+      "name": "Pamplona"
+    },
+    {
+      "id": "paris",
+      "name": "Paris"
+    },
+    {
+      "id": "petrograd",
+      "name": "Petrograd"
+    },
+    {
+      "id": "riga",
+      "name": "Riga"
+    },
+    {
+      "id": "roma",
+      "name": "Roma"
+    },
+    {
+      "id": "rostov",
+      "name": "Rostov"
+    },
+    {
+      "id": "sarajevo",
+      "name": "Sarajevo"
+    },
+    {
+      "id": "sevastopol",
+      "name": "Sevastopol"
+    },
+    {
+      "id": "smolensk",
+      "name": "Smolensk"
+    },
+    {
+      "id": "smyrna",
+      "name": "Smyrna"
+    },
+    {
+      "id": "sochi",
+      "name": "Sochi"
+    },
+    {
+      "id": "sofia",
+      "name": "Sofia"
+    },
+    {
+      "id": "stockholm",
+      "name": "Stockholm"
+    },
+    {
+      "id": "venezia",
+      "name": "Venezia"
+    },
+    {
+      "id": "warszawa",
+      "name": "Warszawa"
+    },
+    {
+      "id": "wien",
+      "name": "Wien"
+    },
+    {
+      "id": "wilno",
+      "name": "Wilno"
+    },
+    {
+      "id": "zagrab",
+      "name": "Zagrab"
+    },
+    {
+      "id": "zurich",
+      "name": "Zurich"
+    }
+  ],
+  "routes": [
+    {
+      "id": "amsterdam--bruxelles--1",
+      "a": "amsterdam",
+      "b": "bruxelles",
+      "length": 1,
+      "color": "BLACK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "amsterdam--essen--1",
+      "a": "amsterdam",
+      "b": "essen",
+      "length": 3,
+      "color": "YELLOW",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "amsterdam--frankfurt--1",
+      "a": "amsterdam",
+      "b": "frankfurt",
+      "length": 2,
+      "color": "WHITE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "amsterdam--london--1",
+      "a": "amsterdam",
+      "b": "london",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 2
+    },
+    {
+      "id": "angora--constantinople--1",
+      "a": "angora",
+      "b": "constantinople",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "angora--erzurum--1",
+      "a": "angora",
+      "b": "erzurum",
+      "length": 3,
+      "color": "BLACK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "angora--smyrna--1",
+      "a": "angora",
+      "b": "smyrna",
+      "length": 3,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "athina--brindisi--1",
+      "a": "athina",
+      "b": "brindisi",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "athina--sarajevo--1",
+      "a": "athina",
+      "b": "sarajevo",
+      "length": 4,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "athina--smyrna--1",
+      "a": "athina",
+      "b": "smyrna",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "athina--sofia--1",
+      "a": "athina",
+      "b": "sofia",
+      "length": 3,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "barcelona--madrid--1",
+      "a": "barcelona",
+      "b": "madrid",
+      "length": 2,
+      "color": "YELLOW",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "barcelona--marseille--1",
+      "a": "barcelona",
+      "b": "marseille",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "barcelona--pamplona--1",
+      "a": "barcelona",
+      "b": "pamplona",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--danzig--1",
+      "a": "berlin",
+      "b": "danzig",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--essen--1",
+      "a": "berlin",
+      "b": "essen",
+      "length": 2,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--frankfurt--1",
+      "a": "berlin",
+      "b": "frankfurt",
+      "length": 3,
+      "color": "BLACK",
+      "parallel_group": "berlin--frankfurt",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--frankfurt--2",
+      "a": "berlin",
+      "b": "frankfurt",
+      "length": 3,
+      "color": "RED",
+      "parallel_group": "berlin--frankfurt",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--warszawa--1",
+      "a": "berlin",
+      "b": "warszawa",
+      "length": 4,
+      "color": "PINK",
+      "parallel_group": "berlin--warszawa",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--warszawa--2",
+      "a": "berlin",
+      "b": "warszawa",
+      "length": 4,
+      "color": "YELLOW",
+      "parallel_group": "berlin--warszawa",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "berlin--wien--1",
+      "a": "berlin",
+      "b": "wien",
+      "length": 3,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "brest--dieppe--1",
+      "a": "brest",
+      "b": "dieppe",
+      "length": 2,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "brest--pamplona--1",
+      "a": "brest",
+      "b": "pamplona",
+      "length": 4,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "brest--paris--1",
+      "a": "brest",
+      "b": "paris",
+      "length": 3,
+      "color": "BLACK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "brindisi--palermo--1",
+      "a": "brindisi",
+      "b": "palermo",
+      "length": 3,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "brindisi--roma--1",
+      "a": "brindisi",
+      "b": "roma",
+      "length": 2,
+      "color": "WHITE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bruxelles--dieppe--1",
+      "a": "bruxelles",
+      "b": "dieppe",
+      "length": 2,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bruxelles--frankfurt--1",
+      "a": "bruxelles",
+      "b": "frankfurt",
+      "length": 2,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bruxelles--paris--1",
+      "a": "bruxelles",
+      "b": "paris",
+      "length": 2,
+      "color": "RED",
+      "parallel_group": "bruxelles--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bruxelles--paris--2",
+      "a": "bruxelles",
+      "b": "paris",
+      "length": 2,
+      "color": "YELLOW",
+      "parallel_group": "bruxelles--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bucuresti--budapest--1",
+      "a": "bucuresti",
+      "b": "budapest",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bucuresti--constantinople--1",
+      "a": "bucuresti",
+      "b": "constantinople",
+      "length": 3,
+      "color": "YELLOW",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bucuresti--kyiv--1",
+      "a": "bucuresti",
+      "b": "kyiv",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bucuresti--sevastopol--1",
+      "a": "bucuresti",
+      "b": "sevastopol",
+      "length": 4,
+      "color": "WHITE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "bucuresti--sofia--1",
+      "a": "bucuresti",
+      "b": "sofia",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "budapest--kyiv--1",
+      "a": "budapest",
+      "b": "kyiv",
+      "length": 6,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "budapest--sarajevo--1",
+      "a": "budapest",
+      "b": "sarajevo",
+      "length": 3,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "budapest--wien--1",
+      "a": "budapest",
+      "b": "wien",
+      "length": 1,
+      "color": "RED",
+      "parallel_group": "budapest--wien",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "budapest--wien--2",
+      "a": "budapest",
+      "b": "wien",
+      "length": 1,
+      "color": "WHITE",
+      "parallel_group": "budapest--wien",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "budapest--zagrab--1",
+      "a": "budapest",
+      "b": "zagrab",
+      "length": 2,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "cadiz--lisboa--1",
+      "a": "cadiz",
+      "b": "lisboa",
+      "length": 2,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "cadiz--madrid--1",
+      "a": "cadiz",
+      "b": "madrid",
+      "length": 3,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "constantinople--sevastopol--1",
+      "a": "constantinople",
+      "b": "sevastopol",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 2
+    },
+    {
+      "id": "constantinople--smyrna--1",
+      "a": "constantinople",
+      "b": "smyrna",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "constantinople--sofia--1",
+      "a": "constantinople",
+      "b": "sofia",
+      "length": 3,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "danzig--riga--1",
+      "a": "danzig",
+      "b": "riga",
+      "length": 3,
+      "color": "BLACK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "danzig--warszawa--1",
+      "a": "danzig",
+      "b": "warszawa",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "dieppe--london--1",
+      "a": "dieppe",
+      "b": "london",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "dieppe--london",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "dieppe--london--2",
+      "a": "dieppe",
+      "b": "london",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "dieppe--london",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "dieppe--paris--1",
+      "a": "dieppe",
+      "b": "paris",
+      "length": 1,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "edinburgh--london--1",
+      "a": "edinburgh",
+      "b": "london",
+      "length": 4,
+      "color": "BLACK",
+      "parallel_group": "edinburgh--london",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "edinburgh--london--2",
+      "a": "edinburgh",
+      "b": "london",
+      "length": 4,
+      "color": "ORANGE",
+      "parallel_group": "edinburgh--london",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "erzurum--sevastopol--1",
+      "a": "erzurum",
+      "b": "sevastopol",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 2
+    },
+    {
+      "id": "erzurum--sochi--1",
+      "a": "erzurum",
+      "b": "sochi",
+      "length": 3,
+      "color": "RED",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "essen--frankfurt--1",
+      "a": "essen",
+      "b": "frankfurt",
+      "length": 2,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "essen--kobenhavn--1",
+      "a": "essen",
+      "b": "kobenhavn",
+      "length": 3,
+      "color": "GRAY",
+      "parallel_group": "essen--kobenhavn",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "essen--kobenhavn--2",
+      "a": "essen",
+      "b": "kobenhavn",
+      "length": 3,
+      "color": "GRAY",
+      "parallel_group": "essen--kobenhavn",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "frankfurt--munchen--1",
+      "a": "frankfurt",
+      "b": "munchen",
+      "length": 2,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "frankfurt--paris--1",
+      "a": "frankfurt",
+      "b": "paris",
+      "length": 3,
+      "color": "ORANGE",
+      "parallel_group": "frankfurt--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "frankfurt--paris--2",
+      "a": "frankfurt",
+      "b": "paris",
+      "length": 3,
+      "color": "WHITE",
+      "parallel_group": "frankfurt--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kharkov--kyiv--1",
+      "a": "kharkov",
+      "b": "kyiv",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kharkov--moskva--1",
+      "a": "kharkov",
+      "b": "moskva",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kharkov--rostov--1",
+      "a": "kharkov",
+      "b": "rostov",
+      "length": 2,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kobenhavn--stockholm--1",
+      "a": "kobenhavn",
+      "b": "stockholm",
+      "length": 3,
+      "color": "WHITE",
+      "parallel_group": "kobenhavn--stockholm",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kobenhavn--stockholm--2",
+      "a": "kobenhavn",
+      "b": "stockholm",
+      "length": 3,
+      "color": "YELLOW",
+      "parallel_group": "kobenhavn--stockholm",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kyiv--smolensk--1",
+      "a": "kyiv",
+      "b": "smolensk",
+      "length": 3,
+      "color": "RED",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kyiv--warszawa--1",
+      "a": "kyiv",
+      "b": "warszawa",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "kyiv--wilno--1",
+      "a": "kyiv",
+      "b": "wilno",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "lisboa--madrid--1",
+      "a": "lisboa",
+      "b": "madrid",
+      "length": 3,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "madrid--pamplona--1",
+      "a": "madrid",
+      "b": "pamplona",
+      "length": 3,
+      "color": "BLACK",
+      "parallel_group": "madrid--pamplona",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "madrid--pamplona--2",
+      "a": "madrid",
+      "b": "pamplona",
+      "length": 3,
+      "color": "WHITE",
+      "parallel_group": "madrid--pamplona",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "marseille--pamplona--1",
+      "a": "marseille",
+      "b": "pamplona",
+      "length": 4,
+      "color": "RED",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "marseille--paris--1",
+      "a": "marseille",
+      "b": "paris",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "marseille--roma--1",
+      "a": "marseille",
+      "b": "roma",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "marseille--zurich--1",
+      "a": "marseille",
+      "b": "zurich",
+      "length": 2,
+      "color": "PINK",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "moskva--petrograd--1",
+      "a": "moskva",
+      "b": "petrograd",
+      "length": 4,
+      "color": "WHITE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "moskva--smolensk--1",
+      "a": "moskva",
+      "b": "smolensk",
+      "length": 2,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "munchen--venezia--1",
+      "a": "munchen",
+      "b": "venezia",
+      "length": 2,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "munchen--wien--1",
+      "a": "munchen",
+      "b": "wien",
+      "length": 3,
+      "color": "ORANGE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "munchen--zurich--1",
+      "a": "munchen",
+      "b": "zurich",
+      "length": 2,
+      "color": "YELLOW",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "palermo--roma--1",
+      "a": "palermo",
+      "b": "roma",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "palermo--smyrna--1",
+      "a": "palermo",
+      "b": "smyrna",
+      "length": 6,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 2
+    },
+    {
+      "id": "pamplona--paris--1",
+      "a": "pamplona",
+      "b": "paris",
+      "length": 4,
+      "color": "BLUE",
+      "parallel_group": "pamplona--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "pamplona--paris--2",
+      "a": "pamplona",
+      "b": "paris",
+      "length": 4,
+      "color": "GREEN",
+      "parallel_group": "pamplona--paris",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "paris--zurich--1",
+      "a": "paris",
+      "b": "zurich",
+      "length": 3,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "petrograd--riga--1",
+      "a": "petrograd",
+      "b": "riga",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "petrograd--stockholm--1",
+      "a": "petrograd",
+      "b": "stockholm",
+      "length": 8,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "petrograd--wilno--1",
+      "a": "petrograd",
+      "b": "wilno",
+      "length": 4,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "riga--wilno--1",
+      "a": "riga",
+      "b": "wilno",
+      "length": 4,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "roma--venezia--1",
+      "a": "roma",
+      "b": "venezia",
+      "length": 2,
+      "color": "BLACK",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "rostov--sevastopol--1",
+      "a": "rostov",
+      "b": "sevastopol",
+      "length": 4,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "rostov--sochi--1",
+      "a": "rostov",
+      "b": "sochi",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "sarajevo--sofia--1",
+      "a": "sarajevo",
+      "b": "sofia",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "sarajevo--zagrab--1",
+      "a": "sarajevo",
+      "b": "zagrab",
+      "length": 3,
+      "color": "RED",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "sevastopol--sochi--1",
+      "a": "sevastopol",
+      "b": "sochi",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "FERRY",
+      "source_locomotives": 1
+    },
+    {
+      "id": "smolensk--wilno--1",
+      "a": "smolensk",
+      "b": "wilno",
+      "length": 3,
+      "color": "YELLOW",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "venezia--zagrab--1",
+      "a": "venezia",
+      "b": "zagrab",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "venezia--zurich--1",
+      "a": "venezia",
+      "b": "zurich",
+      "length": 2,
+      "color": "GREEN",
+      "parallel_group": "",
+      "source_kind": "TUNNEL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "warszawa--wien--1",
+      "a": "warszawa",
+      "b": "wien",
+      "length": 4,
+      "color": "BLUE",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "warszawa--wilno--1",
+      "a": "warszawa",
+      "b": "wilno",
+      "length": 3,
+      "color": "RED",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    },
+    {
+      "id": "wien--zagrab--1",
+      "a": "wien",
+      "b": "zagrab",
+      "length": 2,
+      "color": "GRAY",
+      "parallel_group": "",
+      "source_kind": "NORMAL",
+      "source_locomotives": 0
+    }
+  ],
+  "tickets": [
+    {
+      "id": "amsterdam--pamplona",
+      "a": "amsterdam",
+      "b": "pamplona",
+      "points": 7,
+      "long": false
+    },
+    {
+      "id": "amsterdam--wilno",
+      "a": "amsterdam",
+      "b": "wilno",
+      "points": 12,
+      "long": false
+    },
+    {
+      "id": "angora--athina",
+      "a": "angora",
+      "b": "athina",
+      "points": 5,
+      "long": false
+    },
+    {
+      "id": "angora--kharkov",
+      "a": "angora",
+      "b": "kharkov",
+      "points": 10,
+      "long": false
+    },
+    {
+      "id": "athina--edinburgh",
+      "a": "athina",
+      "b": "edinburgh",
+      "points": 21,
+      "long": true
+    },
+    {
+      "id": "athina--wilno",
+      "a": "athina",
+      "b": "wilno",
+      "points": 11,
+      "long": false
+    },
+    {
+      "id": "barcelona--bruxelles",
+      "a": "barcelona",
+      "b": "bruxelles",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "barcelona--munchen",
+      "a": "barcelona",
+      "b": "munchen",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "berlin--bucuresti",
+      "a": "berlin",
+      "b": "bucuresti",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "berlin--london",
+      "a": "berlin",
+      "b": "london",
+      "points": 7,
+      "long": false
+    },
+    {
+      "id": "berlin--moskva",
+      "a": "berlin",
+      "b": "moskva",
+      "points": 12,
+      "long": false
+    },
+    {
+      "id": "berlin--roma",
+      "a": "berlin",
+      "b": "roma",
+      "points": 9,
+      "long": false
+    },
+    {
+      "id": "brest--marseille",
+      "a": "brest",
+      "b": "marseille",
+      "points": 7,
+      "long": false
+    },
+    {
+      "id": "brest--petrograd",
+      "a": "brest",
+      "b": "petrograd",
+      "points": 20,
+      "long": true
+    },
+    {
+      "id": "brest--venezia",
+      "a": "brest",
+      "b": "venezia",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "brindisi--zagrab",
+      "a": "brindisi",
+      "b": "zagrab",
+      "points": 6,
+      "long": false
+    },
+    {
+      "id": "brindisi--zurich",
+      "a": "brindisi",
+      "b": "zurich",
+      "points": 6,
+      "long": false
+    },
+    {
+      "id": "bruxelles--danzig",
+      "a": "bruxelles",
+      "b": "danzig",
+      "points": 9,
+      "long": false
+    },
+    {
+      "id": "bucuresti--riga",
+      "a": "bucuresti",
+      "b": "riga",
+      "points": 10,
+      "long": false
+    },
+    {
+      "id": "budapest--sofia",
+      "a": "budapest",
+      "b": "sofia",
+      "points": 5,
+      "long": false
+    },
+    {
+      "id": "budapest--zurich",
+      "a": "budapest",
+      "b": "zurich",
+      "points": 6,
+      "long": false
+    },
+    {
+      "id": "cadiz--stockholm",
+      "a": "cadiz",
+      "b": "stockholm",
+      "points": 21,
+      "long": true
+    },
+    {
+      "id": "constantinople--palermo",
+      "a": "constantinople",
+      "b": "palermo",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "constantinople--venezia",
+      "a": "constantinople",
+      "b": "venezia",
+      "points": 10,
+      "long": false
+    },
+    {
+      "id": "danzig--lisboa",
+      "a": "danzig",
+      "b": "lisboa",
+      "points": 20,
+      "long": true
+    },
+    {
+      "id": "dieppe--madrid",
+      "a": "dieppe",
+      "b": "madrid",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "edinburgh--paris",
+      "a": "edinburgh",
+      "b": "paris",
+      "points": 7,
+      "long": false
+    },
+    {
+      "id": "erzurum--kobenhavn",
+      "a": "erzurum",
+      "b": "kobenhavn",
+      "points": 21,
+      "long": true
+    },
+    {
+      "id": "erzurum--rostov",
+      "a": "erzurum",
+      "b": "rostov",
+      "points": 5,
+      "long": false
+    },
+    {
+      "id": "essen--kyiv",
+      "a": "essen",
+      "b": "kyiv",
+      "points": 10,
+      "long": false
+    },
+    {
+      "id": "essen--marseille",
+      "a": "essen",
+      "b": "marseille",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "frankfurt--kobenhavn",
+      "a": "frankfurt",
+      "b": "kobenhavn",
+      "points": 5,
+      "long": false
+    },
+    {
+      "id": "frankfurt--smolensk",
+      "a": "frankfurt",
+      "b": "smolensk",
+      "points": 13,
+      "long": false
+    },
+    {
+      "id": "kyiv--petrograd",
+      "a": "kyiv",
+      "b": "petrograd",
+      "points": 6,
+      "long": false
+    },
+    {
+      "id": "kyiv--sochi",
+      "a": "kyiv",
+      "b": "sochi",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "london--wien",
+      "a": "london",
+      "b": "wien",
+      "points": 10,
+      "long": false
+    },
+    {
+      "id": "madrid--zurich",
+      "a": "madrid",
+      "b": "zurich",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "moskva--palermo",
+      "a": "moskva",
+      "b": "palermo",
+      "points": 20,
+      "long": true
+    },
+    {
+      "id": "paris--wien",
+      "a": "paris",
+      "b": "wien",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "paris--zagrab",
+      "a": "paris",
+      "b": "zagrab",
+      "points": 7,
+      "long": false
+    },
+    {
+      "id": "roma--smyrna",
+      "a": "roma",
+      "b": "smyrna",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "rostov--smolensk",
+      "a": "rostov",
+      "b": "smolensk",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "sarajevo--sevastopol",
+      "a": "sarajevo",
+      "b": "sevastopol",
+      "points": 8,
+      "long": false
+    },
+    {
+      "id": "smolensk--warszawa",
+      "a": "smolensk",
+      "b": "warszawa",
+      "points": 6,
+      "long": false
+    },
+    {
+      "id": "smyrna--sofia",
+      "a": "smyrna",
+      "b": "sofia",
+      "points": 5,
+      "long": false
+    },
+    {
+      "id": "stockholm--wien",
+      "a": "stockholm",
+      "b": "wien",
+      "points": 11,
+      "long": false
+    }
+  ]
+}
